@@ -15,4 +15,3 @@
    ```bash
    npx expo start -c
    ```
- This project is being updated by Saran 
