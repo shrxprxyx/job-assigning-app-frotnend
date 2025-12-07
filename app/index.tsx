@@ -1,9 +1,5 @@
-import { Text, View } from "react-native";
+import SignUp from "./auth/SignUp";
 
 export default function Index() {
-  return (
-    <View>
-      <Text className="text-blue-800">Hello</Text>
-    </View>
-  );
+  return <SignUp />;
 }
