@@ -1,28 +1,38 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function SignUp() {
   const router = useRouter();
-
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
   const [phone, setPhone] = useState("");
-  const [skills, setSkills] = useState("");
 
   const handleSubmit = () => {
-    if (!name || !age || !phone) {
+    if (!phone) {
       alert("Please fill all required fields");
       return;
     }
-
-    router.push("/auth/Login");
+    router.push("/auth/user-details");
   };
 
   return (
-    <View className="flex-1 bg-bgmain px-6 justify-center">
-
+    <KeyboardAwareScrollView
+      contentContainerStyle={{
+        flexGrow: 1,
+        justifyContent: "center",
+        paddingHorizontal: 24,
+        paddingVertical: 15,
+      }}
+      enableOnAndroid={true}
+      extraScrollHeight={30}
+      keyboardOpeningTime={0}
+    >
       <View className="items-center mb-6">
         <FontAwesome name="paper-plane" size={48} color="#0D1821" />
         <Text className="text-3xl mt-8 font-bold text-textmain">
@@ -30,38 +40,13 @@ export default function SignUp() {
         </Text>
       </View>
 
-      <Text className="text-textmuted font-medium">Full Name</Text>
-      <TextInput
-        className="bg-card p-3 rounded-xl mt-1 mb-3"
-        placeholder="Enter your full name"
-        value={name}
-        onChangeText={setName}
-      />
-
-      <Text className="text-textmuted font-medium">Age</Text>
-      <TextInput
-        className="bg-card p-3 rounded-xl mt-1 mb-3"
-        placeholder="Enter your age"
-        keyboardType="numeric"
-        value={age}
-        onChangeText={setAge}
-      />
-
       <Text className="text-textmuted font-medium">Phone Number</Text>
       <TextInput
-        className="bg-card p-3 rounded-xl mt-1 mb-3"
+        className="bg-[#c7c7c7] p-3 rounded-xl mt-1 mb-3"
         placeholder="Enter phone number"
         keyboardType="phone-pad"
         value={phone}
         onChangeText={setPhone}
-      />
-
-      <Text className="text-textmuted font-medium">Skills</Text>
-      <TextInput
-        className="bg-card p-3 rounded-xl mt-1 mb-3"
-        placeholder="Skills"
-        value={skills}
-        onChangeText={setSkills}
       />
 
       <TouchableOpacity
@@ -81,7 +66,6 @@ export default function SignUp() {
           Already have an account? Login
         </Text>
       </TouchableOpacity>
-    </View>
+    </KeyboardAwareScrollView>
   );
 }
-

@@ -7,7 +7,6 @@ module.exports = {
       colors: {
         bgmain: "#FFFFFF",
         card: "#F4F4F4",
-        soft: "#D9CFC7",
         accent: "#0D1821",
         textmain: "#0D1821",
         textmuted: "#0D1821",
